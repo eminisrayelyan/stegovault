@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../icon.png">
+        <link rel="stylesheet" href="../static/style.css">
+        <title>StegoVault</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🛡️ StegoVault</h1>
+
+            <div class="tabs">
+                <div class="tab active" onclick="switchTab('hide')">Hide Secret</div>
+                <div class="tab" onclick="switchTab('extract')">Extract Secret</div>
+            </div>
+
+            <div id="hide-section" class="form-section active">
+                <form id="hide-form">
+                    <div class="file-drop-area">
+                        <span class="file-msg" id="cover-msg">📁 Choose COVER Image (RGB)</span>
+                        <input type="file" class="file-input" id="cover-img" accept="image/*" required onchange="updateFileName(this, 'cover-msg')">
+                    </div>
+
+                    <div class="file-drop-area">
+                        <span class="file-msg" id="secret-msg">📁 Choose SECRET Image (Grayscale)</span>
+                        <input type="file" class="file-input" id="secret-img" accept="image/*" required onchange="updateFileName(this, 'secret-msg')">
+                    </div>
+
+                    <button type="submit">🔒 Hide & Encrypt</button>
+                    <div id="hide-status" class="status">Processing... Please wait.</div>
+                </form>
+            </div>
+
+            <div id="extract-section" class="form-section">
+                <form id="extract-form">
+                    <div class="file-drop-area">
+                        <span class="file-msg" id="stego-msg">📁 Choose STEGO Image (stego.png)</span>
+                        <input type="file" class="file-input" id="stego-img" accept="image/png" required onchange="updateFileName(this, 'stego-msg')">
+                    </div>
+
+                    <div class="file-drop-area">
+                        <span class="file-msg" id="key-msg">🔑 Choose AES Key (aes_key.npy)</span>
+                        <input type="file" class="file-input" id="aes-key" accept=".npy" required onchange="updateFileName(this, 'key-msg')">
+                    </div>
+
+                    <div class="file-drop-area">
+                        <span class="file-msg" id="meta-msg">📄 Choose Metadata (metadata.json)</span>
+                        <input type="file" class="file-input" id="meta-file" accept=".json" required onchange="updateFileName(this, 'meta-msg')">
+                    </div>
+
+                    <button type="submit">🔓 Decrypt & Extract</button>
+                    <div id="extract-status" class="status">Extracting... Please wait.</div>
+                </form>
+            </div>
+        </div>
+            <script src="../static/script.js"></script> 
+    </body>
+</html>
